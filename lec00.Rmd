@@ -1,0 +1,106 @@
+---
+title: "Продвинутая Эконометрика, апрель-июнь 2022"
+subtitle: "Введение в курс"
+author: "В. Н. Пырлик"
+date: "9 апреля 2022"
+output:
+  xaringan::moon_reader:
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    lib_dir: libs
+    css: [libs/main.css, libs/fonts.css, libs/animate.css]
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+      highlightLines: true
+      ratio: "8:5"
+---
+class: animated, fadeIn
+## Сегодня
+
+- Цели и содержание курса
+
+--
+
+- Формат занятий и работы, материалы, обратная связь и контакты
+
+--
+
+- Контроль и оценивание
+
+--
+
+- Лекция 1, домашнее задание, В&О
+
+---
+class: animated, fadeIn
+### Знакомство
+## Пырлик Владимир Николаевич
+
+- кандидат экономических наук
+
+- доцент депаратмента экономики ШЭМ
+
+- руководитель магистратуры ПЭиММ (ЭКОНТЕХ)
+
+- PhD in economics candidate at CERGE-EI
+
+- занимаюсь приклданой финансовой эконометрикой
+
+---
+class: animated, fadeIn
+## Цели и содержание курса
+
+### Цель
+
+*Не дать мозгам засохнуть*
+
+---
+class: animated, fadeIn
+## Цели и содержание курса
+
+### Цель
+
+*Углубленное изучение некоторых разделов эконометрики и прикладной эконометрики*
+
+---
+class: animated, fadeIn
+## Цели и содержание курса
+
+### Содержание
+
+**Учебник:** [HE] Hansen's Econometrics
+
+**Общая тема:** Обобщенный метод моментов (Generalized method of moments, GMM)
+
+**Прочие материалы:** статьи из зарубежных журналов (классические и современные)
+
+---
+class: animated, fadeIn
+## Формат занятий и работы
+
+- все занятия онлайн, в Zoom, ведётся запись
+
+- формат занятий: смешанный лекционно-семинарский
+
+- часть материалов будет даваться асинхронно
+
+- групповая презентация статьи
+
+- индивидуальная контрольная работа
+
+---
+class: animated, fadeIn
+## Платформы для интерактива и коммуникации
+
+*TBD*
+
+---
+class: animated, fadeIn
+## Контроль, оценки
+
+$$О_{ИТОГ}=0.5\timesО_{ПС}+0.5\timesО_{КР}$$
+---
+class: section, animated, zoomIn
+
+### Это еще не все 
