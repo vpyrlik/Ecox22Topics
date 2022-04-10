@@ -32,9 +32,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ---
 
-### Дополнительно
+#### Дополнительно
 
 - [Все записи занятий в одном месте](https://drive.google.com/drive/folders/1sVUQpHBtPKB8BgCkpSrQaVz5B73M677j?usp=sharing)
+
+- [Страница учебника](https://www.ssc.wisc.edu/~bhansen/econometrics/) и [текст учебника](https://www.ssc.wisc.edu/~bhansen/econometrics/Econometrics.pdf)
 
 ---
 
