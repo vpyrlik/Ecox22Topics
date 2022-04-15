@@ -1,0 +1,420 @@
+---
+title: "Продвинутая Эконометрика, апрель-июнь 2022"
+subtitle: "Лекция 2. Теория ОММ"
+author: "В. Н. Пырлик"
+date: "16 апреля 2022"
+output:
+  xaringan::moon_reader:
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    lib_dir: libs
+    css: [libs/main.css, libs/fonts.css, libs/animate.css]
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+      highlightLines: true
+      ratio: "8:5"
+---
+class: animated, fadeIn
+## Сегодня
+
+- (К)ММ: Пример и мотивация для ОММ
+
+- Сверхидентификация: простейший случай
+
+- **ОММ: теория**
+
+  - ...
+  
+- Проверка гипотез
+
+  - гипотезы о параметрах
+  
+  - "верность модели", тест сверхидентификации
+
+- Простой пример
+
+---
+class: section, animated, zoomIn
+### Повторение:
+## (классический) метод моментов
+
+---
+class: animated, fadeIn
+## .gb[Пример 4] Оценки экспоненциального распределения
+Рассмотрите модель $$x_i\sim\text{iid}E_{\lambda}.$$
+.rmk[Вспомните (найдите) основные характеристики экспоненциального распределения: фкнкция плотности распределения вероятности, моменты]
+
+.bb[?] Поставьте задачу оценки методом моментов на основе математического ожидания
+
+--
+
+.bb[?] Найдите оценку, ее свойства
+
+--
+
+.bb[?] Обсудите альтернативную оценку на основе второго момента
+
+--
+
+.bb[?] Обсудите возможности проверить "верна ли модель"
+
+---
+class: animated, fadeIn
+## .gb[Пример 3] Самая простая сверхидентификация `r emoji::emoji("professor")` .right[.rmk[остался с прошлого занятия]]
+
+Рассмотрите модель
+
+$$\mathbb{E}y=\mathbb{E}x,\;\{x_i,y_i\}\sim\text{iid},\;\text{и}\;x\;\text{и}\;y\;\text{независимы}.$$
+
+--
+
+.bb[?] Обсудите возможность оценки методом моментов
+
+--
+
+.bb[?] Рассмотрите альтернативную запись модели:
+
+$$\mathbb{E}\left(\begin{matrix}y-\theta_o\\x-\theta_o\end{matrix}\right)=\mathbb{O}_2.$$
+Подходит ли классический метод моментов для оценки модели? Обсудите возможные подходы к оцениванию.
+
+---
+class: section, animated, flipInY
+</br>
+# Обобщенный Метод Моментов
+</br>
+### или просто ОММ (GMM)
+
+---
+class: animated, fadeIn
+### ОММ: теория I
+## Модель в терминах ОММ, условия на моменты
+
+.center[В терминах ОММ мы всегда имеем дело</br>с (параметрической) моделью, которая задана в виде</br>**популяционных условий на моменты:**]
+
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+
+--
+
+- $x\;-\;$ наблюдаемые случайные величины (векторы) 
+
+--
+
+- $\Theta\ni\theta\;-\;$ неизвестные параметры
+
+- $\theta_o\;-\;$ истинные значения параметров, $\theta_o\in\Theta$
+
+--
+
+- $f(\cdot;\theta)\;-\;$ функция, задающая условия на моменты
+
+---
+class: animated, fadeIn
+### ОММ: теория I
+## Модель в терминах ОММ, условия на моменты
+
+.center[В терминах ОММ мы всегда имеем дело</br>с (параметрической) моделью, которая задана в виде</br>**популяционных условий на моменты:**]
+
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+
+- $x\in R^\ell$, размерность не так важна, не менее 1
+
+--
+
+- $\Theta\subseteq R^k$, $k\;-\;$ количество параметров
+
+--
+
+- $f(\cdot;\theta): R^\ell\to R^m$, $m\;-\;$ количество условий на моменты
+
+---
+class: animated, fadeIn
+### ОММ: теория II
+## Идентификация
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+$$\theta\in\Theta\subseteq R^k,\;\;\;f(\cdot;\theta):...\to R^m$$
+
+--
+
+.center[**Глобальное условие идентификации**]
+
+1) $\exists!\theta_o\in\Theta:\;\mathbb{E}_xf(x;\theta_o)=0$
+
+2) $m>k$
+
+--
+
+.right[.rb[!] .rmk[нарушение (1) или *m<k* - недоидентификация]]
+
+--
+
+.right[.rb[!] .rmk[*m=k* - точная идентификация, можно применить КММ]]
+
+---
+class: animated, fadeIn
+### ОММ: теория III
+## Оценка
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+$$\theta\in\Theta\subseteq R^k,\;\;\;f(\cdot;\theta):...\to R^m$$
+$$\forall\theta\in\Theta,\theta\neq\theta_o,\;\mathbb{E}_xf(x;\theta)\neq0,\text{и}\;\;m>k$$
+--
+
+.center[.rb[!] Из-за сверхидентификации не выйдет применить принцип аналогии напрямую к условиям на моменты.
+
+Система $\;\overline{f(x_i;\hat\theta)}=0\;$ не имеет решения.]
+
+---
+class: animated, fadeIn
+### ОММ: теория III
+## Оценка
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+$$\theta\in\Theta\subseteq R^k,\;\;\;f(\cdot;\theta):...\to R^m$$
+$$\forall\theta\in\Theta,\theta\neq\theta_o,\;\mathbb{E}_xf(x;\theta)\neq0,\text{и}\;\;m>k$$
+
+.center[**Популяционная характеристика модели:**]
+
+$$W\;-\;\text{симметричная, положительно-определенная матрица } m\times m,$$
+$$\theta_o\;=\;\arg\min_{\theta\in\Theta} \mathbb{E}_xf(x;\theta)'\:W\:\mathbb{E}_xf(x;\theta),$$
+
+---
+class: animated, fadeIn
+### ОММ: теория III
+## Оценка
+$$\mathbb{E}_xf(x;\theta_o)=0$$
+$$\theta\in\Theta\subseteq R^k,\;\;\;f(\cdot;\theta):...\to R^m$$
+$$\forall\theta\in\Theta,\theta\neq\theta_o,\;\mathbb{E}_xf(x;\theta)\neq0,\text{и}\;\;m>k$$
+
+.center[**Оценка ОММ:**]
+
+$$W_n \xrightarrow[n\to\infty]{p}W$$
+
+$$\hat\theta^{GMM}\;=\;\arg\min_{\theta\in\Theta} \overline{f(x_i;\theta)}'\:W_n\:\overline{f(x_i;\theta)},$$
+
+---
+class: animated, fadeIn
+### ОММ: теория IV
+## Свойства оценок ОММ
+
+.rb[!] Выборочный контекст: $x_i\sim\text{iid}$
+
+--
+
+ - оценки не являются несмещенными
+ 
+ - оценки состоятельные
+ 
+ - оценки асимптотически нормальны
+ 
+--
+
+.rb[!] для выборочного контекста *S&E TS* это тоже работает
+
+--
+
+.rb[!] Оценка и ее свойства зависят от выбора матрицы $W_n$
+ 
+--
+
+.bb[?] Как выбрать матрицу $W_n$?
+
+---
+class: section, animated, zoomIn
+
+# Двухшаговый
+
+### (эффективный)
+
+# обобщенный метод моментов
+
+---
+class: animated, fadeIn
+## Эффективный двухшаговый ОММ
+
+.center[**Интуиция:**]
+
+*Оценка ОММ остается состоятельной для любой матрицы $W_n$, но от выбора матрицы зависит дисперсия оценки.*
+
+--
+
+*Мы можем начать с неэффективной оценки параметров, но использовать ее, чтобы оптмиально выбрать матрицы и переоцинить параметры эффективно.*
+
+---
+class: animated, fadeIn
+## Эффективный двухшаговый ОММ
+
+.center[**Шаг 1**]
+
+$\hat\theta^{_\text{I}}\;-\;$ *(какая-то)* состояетльная оценка параметров
+.right[.rmk[например, оценка КММ или оценка ОММ с *W=I*]]
+
+--
+
+.center[**Оценка оптимальной весовой матрицы:**]
+
+$$W^*_n = \Bigg[\overline{f(x_i;\hat\theta^{_\text{I}})\:f(x_i;\hat\theta^{_\text{I}})'}\Bigg]^{-1}$$
+
+---
+class: animated, fadeIn
+## Эффективный двухшаговый ОММ
+
+.center[**Шаг 2**]
+
+$$\hat\theta^{_\text{II}}\;=\;\arg\min_{\theta\in\Theta}\overline{f(x_i;\theta)}'\:W^*_n\:\overline{f(x_i;\theta)}$$
+
+--
+
+**В результате имеем:**
+
+- $\hat\theta^{_\text{II}}\xrightarrow[n\to\infty]{p}\theta_o$
+
+- $\sqrt{n}(\hat\theta^{_\text{II}}-\theta_o)\xrightarrow[n\to\infty]{d}\mathcal{N}(0;V^*_{\hat\theta})$
+
+--
+
+.bb[?] Что за матрица $V^*_{\theta}$ и как ее оценить?
+
+---
+class: animated, fadeIn
+## Оценка матрицы ковараиций оценок параметров
+
+$$\sqrt{n}(\hat\theta^{_\text{II}}-\theta_o)\xrightarrow[n\to\infty]{d}\mathcal{N}(0;V^*_{\hat\theta})$$
+
+--
+
+$$V^*_{\hat\theta}=\Big[Q'_{\partial f}V_f^{-1}Q^{\:}_{\partial f}\Big]^{-1}$$
+
+- $Q_{\partial f}=\mathbb{E}_x\frac{\partial f(x;q)}{\partial q'}|_{q=\theta_o}$
+
+--
+
+- $V_f = \mathbb{E}_x[f(x;\theta_o)\:f(x;\theta_o)']$
+
+---
+class: animated, fadeIn
+## Оценка матрицы ковараиций оценок параметров
+
+$$\sqrt{n}(\hat\theta^{_\text{II}}-\theta_o)\xrightarrow[n\to\infty]{d}\mathcal{N}(0;V^*_{\hat\theta})$$
+
+
+$$\hat V^*_{\hat\theta}=\Big[\hat Q'_{\partial f}\hat V_f^{-1}\hat Q^{\:}_{\partial f}\Big]^{-1}\;\xrightarrow[n\to\infty]{p}V^*_{\hat\theta}$$
+
+- $\hat Q_{\partial f}=\overline{\frac{\partial f(x_i;q)}{\partial q'}|_{q=\hat\theta^{_\text{II}}}}$
+
+- $\hat V_f = \overline{f(x_i;\hat\theta^{_\text{II}})\:f(x_i;\hat\theta^{_\text{II}})'}$
+
+---
+class: animated, fadeIn
+## .gb[Пример 3] (продолжение)
+
+Рассмотрите альтернативную запись модели:
+
+$$\mathbb{E}\left(\begin{matrix}y-\theta_o\\x-\theta_o\end{matrix}\right)=\mathbb{O}_2.$$
+.bb[?] Сформулируйте задачу в терминах ОММ. Опишите оценку эффективным ОММ. 
+
+--
+
+.right[.rb[!] .rmk[Мы все еще не знаем, как првоерить "верна ли модель"]]
+
+--
+
+.bb[?] А что, если нас не интересует оценка оценка $\theta_o$?
+.right[.rmk[Венитесь к исходной записи модели и сформулируйте целевую функцию ОММ "без параметров", что можно сказать о ее поведении?]]
+
+---
+class: animated, fadeIn
+## .gb[Пример 4] (продолжение)
+
+В модели $$x_i\sim\text{iid}E_{\lambda}$$ рассмотрите оценку ОММ на основе первых двух моментов, т.е. условия на моменты $$\mathbb{E}_x\left(\begin{matrix}x-\lambda^{-1}\\x^2-2\lambda^{-2}\end{matrix}\right)=0$$
+
+.bb[?] Опишите оценку параметра эффиктивным ОММ для разного выбора оценки первого шага
+
+--
+
+.bb[?] Не решая задачу оценки первого шага для $W=I$, покажите состоятельность оценки (и схематично - аси. нормальность)
+
+
+---
+class: section, animated, zoomIn
+# Проверка гипотез
+
+---
+class: animated, fadeIn
+## Клюевые результаты для проверки гипотез
+
+$$\sqrt{n}(\hat\theta^{_\text{II}}-\theta_o)\xrightarrow[n\to\infty]{d}\mathcal{N}(0;V^*_{\hat\theta})$$
+
+.center[и]
+
+$$J = n\:\overline{f(x_i;\hat\theta^{_\text{II}})}'\:W_n^*\overline{f(x_i;\hat\theta^{_\text{II}})}\xrightarrow[\mathbb{E}_xf(x;\theta_o)=0]{d,\:n\to\infty}\chi^2_{m-k}$$
+--
+
+### Критерии проверки гипотез
+
+ - тест Вальда, критерий расстояния
+ 
+ - J-тест Хансена (критерий сверхидентификации)
+
+---
+class: section, animated, zoomIn
+
+## TBC
+
+### До встречи через неделю!
+
+---
+class: section
+### дополнительно
+
+---
+class: center, middle, animated, fadeIn
+
+$$\overline{x}\lambda^3+(2\overline{x^2}-1)\lambda^2-4=0$$
+```{r, echo=FALSE}
+set.seed(146)
+dta <- rexp(100, 0.5)
+x1bar <- mean(dta)
+x2bar <- mean(dta^2)
+lambda <- seq(-1.5,1.5,by=0.001) 
+GMMFOC <- sapply(lambda, function(l) x1bar*l^3+(2*x2bar-1)*l^2-4)
+plot(
+  x = lambda,
+  y = GMMFOC,
+  type = 'l',
+  xlab = "PARAMETER VALUES",
+  ylab = "F.O.C. LHS VALUES"
+)
+abline(0,0,col='gray',lty=3)
+abline(v=0,col='gray',lty=3)
+```
+---
+class: center, middle, animated, fadeIn
+
+$$\overline{x}\lambda^3+(2\overline{x^2}-1)\lambda^2-4=0$$
+```{r, echo=FALSE}
+set.seed(146)
+dta <- rexp(100, 0.5)
+x1bar <- mean(dta)
+x2bar <- mean(dta^2)
+lambda <- seq(-1.5,1.5,by=0.001) 
+GMMFOC <- sapply(lambda, function(l) x1bar*l^3+(2*x2bar-1)*l^2-4)
+plot(
+  x = lambda,
+  y = GMMFOC,
+  type = 'l',
+  xlab = "PARAMETER VALUES",
+  ylab = "F.O.C. LHS VALUES"
+)
+lines(
+  x = lambda[lambda<=0],
+  y = GMMFOC[lambda<=0],
+  col='white'
+)
+abline(0,0,col='gray',lty=3)
+abline(v=0,col='gray',lty=3)
+points(
+  x = (lambda[lambda>0])[which.min(GMMFOC[lambda>0]^2)],
+  y = 0,
+  col = 'red',
+  lwd = 4
+)
+```
