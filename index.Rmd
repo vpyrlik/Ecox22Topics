@@ -43,7 +43,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ### 23.04. Занятие 3. 
 #### **Компьютреная практика: первое применение ОММ**
 
-Простой пример применения ОММ. Обсуждение модели и алгоритма оценки ОММ. Разбор примера на симулированных данных, наблюдение свойств ОММ и эффективного ОММ с ростом размерав выборки. Пример на реальных данных (не успели). [Слайды.](lec03.html) [Видео.](https://drive.google.com/file/d/11vD55xxDzU3CoAts3zk7c9Db_Hzw-hAa/view?usp=sharing) [Код.](pract01.R) [Данные из последнего примера.](https://drive.google.com/file/d/1Lz8laThmm9cKXFFWwToQcnj9MyojSixP/view?usp=sharing)
+Простой пример применения ОММ. Обсуждение модели и алгоритма оценки ОММ. Разбор примера на симулированных данных, наблюдение свойств ОММ и эффективного ОММ с ростом размерав выборки. Пример на реальных данных (не успели). [**Слайды.**](lec03.html) [**Видео.**](https://drive.google.com/file/d/11vD55xxDzU3CoAts3zk7c9Db_Hzw-hAa/view?usp=sharing) [**Код.**](pract01.R) [**Данные из последнего примера.**](https://drive.google.com/file/d/1Lz8laThmm9cKXFFWwToQcnj9MyojSixP/view?usp=sharing)
 
 ---
 
