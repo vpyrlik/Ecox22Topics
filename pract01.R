@@ -72,12 +72,12 @@ SnI <- function(dta,q){Sn(dta,q,diag(c(1,1,1,1)))}
 
 # ПРИНЦИП ОММ - ГРАФИЧЕСКАЯ ИЛЛЮСТРАЦИЯ =======================================
 #' сетка для значений параметров
-m_grid <- seq(-1.5, -1, by = 0.01)
-s_grid <- seq(2.5, 3.5, by = 0.01)
+m_grid <- seq(-2, 2, by = 0.01)
+s_grid <- seq(1, 5, by = 0.01)
 q_grid <- expand.grid(m_grid, s_grid)
 
 #' анализ SnI для одной из выборок
-i <- 1
+i <- 3
 SnI_on_grid <- 
   q_grid %>% 
   rename(
@@ -109,7 +109,7 @@ SnI_on_grid %>%
     ),
     bins = 200,
     color = "yellow",
-    alpha = 0.15
+    alpha = 0.5
   ) +
   geom_point(
     aes(
@@ -167,7 +167,7 @@ q1 <- c(m = SnI_on_grid$m[which.min(SnI_on_grid$S)],
         s = SnI_on_grid$s[which.min(SnI_on_grid$S)])
 
 #' оценка оптимальной весовой матрицы
-Wnopt <- solve(n[i]^-1 * crossprod(t(sapply(X[[1]],function(x) f(x,q1)))))
+Wnopt <- solve(n[i]^-1 * crossprod(t(sapply(X[[i]],function(x) f(x,q1)))))
 
 #' целевая функция второго шага
 SnII <- function(dta,q) {Sn(dta,q,Wnopt)}
@@ -253,7 +253,7 @@ SnII_on_grid %>%
   )
 
 # ДАННЫЕ: часть 2 - доходность финансового актива =============================
-dta <-
+dta <- 
   read.csv(
     "SBERP_180101_201231.csv",
     sep = ";",
